@@ -1,8 +1,8 @@
 package IBICS;
 
 public class Main {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         IBICS ibics = new IBICS();
-        ibics.run();
-    }
+        ibics.start();
+	}
 }

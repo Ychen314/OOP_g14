@@ -1,23 +1,34 @@
-public class InsuranceProvider {
-    String insuranceCompany;
-    int insuranceId;
-    String contactInfo;
-    String insuranceAgent;
+package IBICS;
 
-    public InsuranceProvider(String insuranceCompany, int insuranceId, int contactInfo, String insuranceAgent){
-        this.insuranceCompany = insuranceCompany;
-        this.insuranceId = insuranceId;
-        this.contactInfo = contactInfo;
-        this.insuranceAgent = insuranceAgent;
+public class InsuranceProvider {
+    private int id;
+    private String name;
+    private String email;
+
+    public InsuranceProvider(int id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
     }
 
-    public static void main(String[]args){
-        InsuranceProvider provider1 = new InsuranceProvider("AIA Malaysia", 1, "0166391090", "MrTEH");
-        InsuranceProvider provider2 = new InsuranceProvider("Great Eastern Life Assurance", 2, "0166391090", "Mr CHEN";);
-        InsuranceProvider provider3 = new InsuranceProvider("Tokio Marine Insurance (Malaysia) Berhad", 3, "0166391090", "Mr Ming");
-        InsuranceProvider provider4 = new InsuranceProvider("Takaful Malaysia", 4, "0166391090", "Mr James");
-        InsuranceProvider provider5 = new InsuranceProvider("Prudential Assurance Malaysia Berhad (PAMB)", 5, "0166391090", "Mr Alfred");
-        InsuranceProvider provider6 = new InsuranceProvider("Manulife Insurance Berhad", 6, "0166391090", "Mr Bryan");
-        
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    
+    // Display insurance provider information
+    public void displayInsuranceProvider() {
+        System.out.println("\n--- Insurance Provider Information ---");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("--------------------------------------\n");
     }
 }
