@@ -1,35 +1,53 @@
 package IBICS;
 
-public class Patient {
+// Import the other group's Patient class
+import ShareGroup.Patient;
+
+public class Patient extends ShareGroup.Patient {
     private int id;
-    private String name;
     private String email;
     private InsuranceProvider insuranceProvider;
     private Treatment[] treatments;
     private int treatmentCount;
     private static final int MAX_TREATMENTS = 10;
 
-    public Patient(int id, String name, String email, InsuranceProvider insuranceProvider) {
+    // Constructor
+    public Patient(int id, String name, String email, int age, String patientID, InsuranceProvider insuranceProvider) {
+        super(name, age, patientID); // Initialize the OtherGroup.Patient fields
         this.id = id;
-        this.name = name;
         this.email = email;
         this.insuranceProvider = insuranceProvider;
         this.treatments = new Treatment[MAX_TREATMENTS];
         this.treatmentCount = 0;
     }
 
+    // Getter Methods
     public int getId() {
         return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getEmail() {
+        return email;
+    }
+
+    public InsuranceProvider getInsuranceProvider() {
+        return insuranceProvider;
+    }
+
+    // Setter Methods
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public void setInsuranceProvider(InsuranceProvider insuranceProvider) {
+        this.insuranceProvider = insuranceProvider;
+    }
+
+    // Add Treatment
     public void addTreatment(Treatment treatment) {
         if (treatmentCount < MAX_TREATMENTS) {
             treatments[treatmentCount++] = treatment;
@@ -39,6 +57,7 @@ public class Patient {
         }
     }
 
+    // Calculate Total Owed
     public double calculateTotalOwed() {
         double total = 0.0;
         for (int i = 0; i < treatmentCount; i++) {
@@ -47,11 +66,11 @@ public class Patient {
         return total;
     }
 
+    // Override displayInfo to include additional attributes
+    @Override
     public void displayInfo() {
-    	System.out.println("\n--- Patient Information ---");
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
+        super.displayInfo(); // Display OtherGroup.Patient's information
+        System.out.println("ID: " + id + ", Email: " + email);
         System.out.println("Insurance Provider: " + insuranceProvider.getName());
         if (treatmentCount > 0) {
             System.out.println("Treatments:");
